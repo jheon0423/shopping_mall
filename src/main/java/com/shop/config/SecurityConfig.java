@@ -31,9 +31,9 @@ public class SecurityConfig{
                                 .logoutRequestMatcher(new AntPathRequestMatcher("/members/logout"))
                                 .logoutSuccessUrl("/")
                 )
-//                .exceptionHandling(exceptionconfig->
-//                        exceptionconfig.authenticationEntryPoint(new CustomAuthenticationEntryPoint())
-//                )
+                .exceptionHandling(exceptionHandling->
+                        exceptionHandling.authenticationEntryPoint(new CustomAuthenticationEntryPoint())
+                )
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
                         .requestMatchers("/", "/members/**", "/item/**", "/images/**").permitAll()
