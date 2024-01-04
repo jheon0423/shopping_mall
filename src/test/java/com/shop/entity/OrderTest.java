@@ -3,6 +3,7 @@ package com.shop.entity;
 import com.shop.constant.ItemSellStatus;
 import com.shop.repository.ItemRepository;
 import com.shop.repository.MemberRepository;
+import com.shop.repository.OrderItemRepository;
 import com.shop.repository.OrderRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
@@ -30,6 +31,9 @@ class OrderTest {
 
     @Autowired
     MemberRepository memberRepository;
+
+    @Autowired
+    OrderItemRepository orderItemRepository;
 
     @PersistenceContext
     EntityManager em;
@@ -97,5 +101,19 @@ class OrderTest {
         order.getOrderItems().remove(0);
         em.flush();
         System.out.printf(order.getOrderItems().toString());
+    }
+
+    @Test
+    @DisplayName("지연 로딩 테스트")
+    public void lazyLoadingTest(){
+        Order order = this.createOrder();
+        Long orderItemId = order.getOrderItems().get(0).getId();
+        em.flush();
+        em.clear();
+
+        OrderItem orderItem = orderItemRepository.findById(order.getId()).orElseThrow(EntityNotFoundException::new);
+        System.out.println("======================================================");
+        System.out.println("Order class : " + orderItem.getOrder().getClass());
+        System.out.println("======================================================");
     }
 }
