@@ -1,5 +1,7 @@
 package com.shop.entity;
 
+import com.shop.config.BaseEntity;
+import com.shop.config.BaseTimeEntity;
 import com.shop.constant.Role;
 import com.shop.dto.MemberFormDto;
 import jakarta.persistence.*;
@@ -13,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Getter
 @Setter
 @ToString
-public class Member {
+public class Member extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
