@@ -1,5 +1,6 @@
 package com.shop.entity;
 
+import com.shop.config.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +10,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-public class OrderItem {
+public class OrderItem extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,7 +29,7 @@ public class OrderItem {
 
     private int count; // 전체 수량
 
-    private LocalDateTime regTime;
+//    private LocalDateTime regTime;
 
-    private LocalDateTime updateTime;
+//    private LocalDateTime updateTime;
 }
