@@ -33,7 +33,7 @@ class MemberTest {
         Member newMember = new Member();
         Member k = memberRepository.save(newMember);
 
-        System.out.println(k.getCreateBy());
+        System.out.println(k.getCreatedBy());
         em.flush();
         em.clear();
 
