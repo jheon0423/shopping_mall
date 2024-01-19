@@ -1,5 +1,6 @@
 package com.shop.entity;
 
+import com.shop.config.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -7,7 +8,7 @@ import lombok.Setter;
 @Entity
 @Getter @Setter
 @Table(name = "cart_item")
-public class CartItem {
+public class CartItem extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,4 +36,6 @@ public class CartItem {
     public void addCount(int count){
         this.count += count;
     }
+
+    public void updateCount(int count) {this.count -= count;}
 }
