@@ -35,7 +35,7 @@ public class SecurityConfig{
                         exceptionHandling.authenticationEntryPoint(new CustomAuthenticationEntryPoint())
                 )
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
+                        .requestMatchers("/css/**", "/js/**", "/img/**", "/image_folder/**").permitAll()
                         .requestMatchers("/", "/members/**", "/item/**", "/images/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
